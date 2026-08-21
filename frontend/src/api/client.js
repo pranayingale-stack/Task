@@ -2,7 +2,9 @@
 // Small wrapper around fetch so every call gets the auth header, JSON
 // parsing, and consistent error objects without repeating boilerplate.
 
-const BASE_URL = '/api';
+const BASE_URL = import.meta.env.VITE_API_URL
+  ? `${import.meta.env.VITE_API_URL.replace(/\/$/, '')}/api`
+  : '/api';
 
 class ApiClientError extends Error {
   constructor(message, status, details) {
