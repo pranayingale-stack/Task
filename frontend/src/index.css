@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(22, 48, 43, 0.06) 1px, transparent 0);
+    background-size: 22px 22px;
+  }
+  h1, h2, h3, h4 {
+    font-family: theme('fontFamily.display');
+  }
+  :focus-visible {
+    outline: 2px solid #B65C42;
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .ticket-notch {
+    position: relative;
+  }
+  .ticket-notch::before,
+  .ticket-notch::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 14px;
+    height: 14px;
+    background: #F1E9D8;
+    border-radius: 9999px;
+    transform: translateY(-50%);
+  }
+  .ticket-notch::before {
+    left: -7px;
+  }
+  .ticket-notch::after {
+    right: -7px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
